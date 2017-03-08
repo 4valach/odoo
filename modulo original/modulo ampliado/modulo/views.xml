@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    
+    <record model="ir.actions.act_window" id="clase_list_action">
+        <field name="name">clase</field>
+        <field name="res_model">modulo.clase</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de clases">
+                <field name="name" />
+                <field name="clase_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="carta_list_action">
+        <field name="name">carta</field>
+        <field name="res_model">modulo.carta</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de cartas">
+                <field name="name" />
+                <field name="coste"/>
+                <field name="ataque" />
+                <field name="resistencia"/>
+                <field name="puntuacion"/>
+                <field name="carta_id"/>  
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mazo_list_action">
+        <field name="name">rareza</field>
+        <field name="res_model">modulo.mazo</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de cartas con rareza">
+                <field name="name" />
+                <field name="rareza" />
+            </tree>
+        </field>
+    </record>
+    
+    
+    
+    <menuitem name="hearthstodoo" id="modulo_menu_root"/>
+    
+    <menuitem name="clases" id="modulo_menu_clases" parent="modulo_menu_root"/>
+    
+    <menuitem name="cartas" id="modulo_menu_cartas" parent="modulo_menu_root"/>
+    
+    <menuitem name="mazos" id="modulo_menu_mazos" parent="modulo_menu_root"/>
+    
+    <menuitem name="listado de clases" id="modulo_list_clases" parent="modulo_menu_clases"
+              action="clase_list_action"/>
+
+    <menuitem name="listado de cartas" id="modulo_list_cartas" parent="modulo_menu_cartas"
+              action="carta_list_action"/>
+
+    <menuitem name="listado de mazos" id="modulo_list_mazos" parent="modulo_menu_mazos"
+              action="mazo_list_action"/>
+  
+    
+        
+        
+        <record model="ir.ui.view" id="clases_form_view">
+            <field name="name">clase.form</field>
+            <field name="model">modulo.clase</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de clases">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="carta_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="cartas_form_view">
+            <field name="name">carta.form</field>
+            <field name="model">modulo.carta</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de cartas">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="coste"/>
+                            <field name="ataque" />
+                            <field name="resistencia"/>
+                            <field name="puntuacion"/>
+                            <field name="clase_id"/>
+                            
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>   
+        <record model="ir.ui.view" id="mazo_form_view">
+            <field name="name">mazo.form</field>
+            <field name="model">modulo.mazo</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de rareza">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="rareza" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+
+  </data>
+</openerp>
