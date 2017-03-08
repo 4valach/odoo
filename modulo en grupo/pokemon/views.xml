@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+     <record model="ir.actions.act_window" id="pokemon_list_action">
+        <field name="name">pokemon</field>
+        <field name="res_model">pokemon.pokemon</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de pokemon">
+                <field name="name" />
+                <field name="pokemon_id"/>
+            </tree>
+        </field>
+    </record>
+
+     <record model="ir.actions.act_window" id="entrenador_list_action">
+        <field name="name">entrenador</field>
+        <field name="res_model">pokemon.entrenador</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="arch" type="xml">
+            <tree string="Listado de entrenadores">
+                <field name="name" />
+                <field name="entrenador_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem name="Pokemon" id="pokemon_menu_root"/>
+    <menuitem name="entrenadores" id="pokemon_menu_entrenadores" parent="pokemon_menu_root"/>
+    <menuitem name="pokemons" id="pokemon_menu_pokemons" parent="pokemon_menu_root"/>
+    <menuitem name="Listado de entrenadores" id="pokemon_list_entrenadores" parent="pokemon_menu_entrenadores" action="entrenador_list_action"/>
+    <menuitem name="Listado de pokemons" id="pokemon_list_pokemons" parent="pokemon_menu_pokemons" action="pokemon_list_action"/>
+
+<!--Vistas para los formularios-->
+    <record model="ir.ui.view" id="entrenador_form_view">
+            <field name="name">entrenador.form</field>
+            <field name="model">pokemon.entrenador</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de entrenadores">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="entrenador_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+<!--Vistas para los formularios--> 
+   <record model="ir.ui.view" id="pokemon_form_view">
+            <field name="name">pokemon.form</field>
+            <field name="model">pokemon.pokemon</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de pokemons">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="pokemon_id"/>
+                            <field name="tipo"/>
+                            <field name="lvl"/>
+                            <!--<field name="longitud"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+       </data>
+</openerp>
